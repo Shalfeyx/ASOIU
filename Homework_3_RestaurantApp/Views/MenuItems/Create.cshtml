@@ -1,0 +1,27 @@
+@model RestaurantMenuApp.Models.MenuItem
+
+<h2>Добавление блюда</h2>
+<form asp-action="Create" method="post">
+    <div class="mb-3">
+        <label asp-for="Name" class="form-label"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Price" class="form-label"></label>
+        <input asp-for="Price" class="form-control" />
+        <span asp-validation-for="Price" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="RestaurantId" class="form-label"></label>
+        <select asp-for="RestaurantId" asp-items="@(new SelectList(ViewBag.Restaurants, "Id", "Name"))" class="form-select">
+            <option value="">-- Выберите ресторан --</option>
+        </select>
+        <span asp-validation-for="RestaurantId" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-success">Сохранить</button>
+    <a asp-action="Index" class="btn btn-secondary">Отмена</a>
+</form>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

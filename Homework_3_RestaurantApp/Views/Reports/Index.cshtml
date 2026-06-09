@@ -1,0 +1,42 @@
+@model RestaurantMenuApp.Models.ReportViewModel
+
+<h2>Отчёт по блюдам и ресторанам</h2>
+
+<h3>1. Полный список блюд</h3>
+<table class="table table-sm">
+    <thead>
+        <tr><th>Блюдо</th><th>Ресторан</th><th>Цена (руб.)</th></tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.FullList)
+        {
+            <tr><td>@item.DishName</td><td>@item.RestaurantName</td><td>@item.Price.ToString("N2")</td></tr>
+        }
+    </tbody>
+</table>
+
+<h3>2. Количество блюд по ресторанам</h3>
+<table class="table table-sm">
+    <thead>
+        <tr><th>Ресторан</th><th>Количество блюд</th></tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.CountByRestaurant)
+        {
+            <tr><td>@item.RestaurantName</td><td>@item.Count</td></tr>
+        }
+    </tbody>
+</table>
+
+<h3>3. Средняя цена по ресторанам (убывание)</h3>
+<table class="table table-sm">
+    <thead>
+        <tr><th>Ресторан</th><th>Средняя цена (руб.)</th></tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.AvgPriceByRestaurant)
+        {
+            <tr><td>@item.RestaurantName</td><td>@item.AveragePrice.ToString("N2")</td></tr>
+        }
+    </tbody>
+</table>

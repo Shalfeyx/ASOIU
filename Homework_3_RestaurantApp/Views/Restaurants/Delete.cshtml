@@ -1,0 +1,17 @@
+@model RestaurantMenuApp.Models.Restaurant
+
+<h2>Удаление ресторана</h2>
+<p>Вы уверены, что хотите удалить ресторан <strong>@Model.Name</strong>?</p>
+@if (Model.MenuItems.Any())
+{
+    <div class="alert alert-danger">У этого ресторана есть блюда. Удаление невозможно.</div>
+    <a asp-action="Index" class="btn btn-secondary">Назад к списку</a>
+}
+else
+{
+    <form asp-action="Delete" method="post">
+        <input type="hidden" asp-for="Id" />
+        <button type="submit" class="btn btn-danger">Удалить</button>
+        <a asp-action="Index" class="btn btn-secondary">Отмена</a>
+    </form>
+}
