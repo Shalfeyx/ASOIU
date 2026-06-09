@@ -20,7 +20,6 @@
 - Паттерн Fluent Interface для отчётов
 
 ## Структура проекта
-
 Homework_2/
 ├── Models/
 │ ├── Restaurant.cs
